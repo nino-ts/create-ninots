@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  # Required for npm Trusted Publishing (OIDC) — no NPM_TOKEN / long-lived secrets.
   id-token: write
   packages: write
 
@@ -18,6 +19,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      # CI-only: enables npm Trusted Publishing / OIDC.
+      # Product support matrix remains Bun-only; this does not reintroduce Node as a runtime.
       - name: Set up Node (npm OIDC helper)
         uses: actions/setup-node@v6
         with:
