@@ -12,7 +12,7 @@ describe("create-ninots", () => {
         }
     });
 
-    test("scaffolds template with TS7 and @ninots ^0.1.0", () => {
+    test("scaffolds template with TS7, session/auth ^0.2.0", () => {
         const proc = Bun.spawnSync(["bun", "run", "./bin/create-ninots.ts", dest], {
             cwd: join(import.meta.dir, ".."),
             stdout: "pipe",
@@ -29,6 +29,8 @@ describe("create-ninots", () => {
         };
         expect(pkg.devDependencies.typescript).toBe("^7.0.0");
         expect(pkg.dependencies["@ninots/support"]).toBe("^0.1.0");
+        expect(pkg.dependencies["@ninots/session"]).toBe("^0.2.0");
+        expect(pkg.dependencies["@ninots/auth"]).toBe("^0.2.0");
         expect(JSON.stringify(pkg)).not.toContain("@ninots/cli");
     });
 });

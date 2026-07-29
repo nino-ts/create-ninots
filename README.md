@@ -15,7 +15,7 @@ Equivalent: `bunx create-ninots myapp`.
 
 - Clean starter (no `.git` from the template)
 - TypeScript `^7.0.0`
-- Direct `@ninots/*@^0.1.0` dependencies (no umbrella / `@ninots/cli`)
+- Direct `@ninots/*` dependencies (session/auth `^0.2.0`; others `^0.1.0` — no umbrella / `@ninots/cli`)
 - Local `./nino` CLI via `@ninots/console`
 
 ## License
