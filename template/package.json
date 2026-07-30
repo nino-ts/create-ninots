@@ -31,7 +31,7 @@
         "@ninots/http": "^0.1.0",
         "@ninots/orm": "^0.1.0",
         "@ninots/events": "^0.1.0",
-        "@ninots/auth": "^0.2.0",
+        "@ninots/auth": "^0.3.0",
         "@ninots/foundation": "^0.1.0",
         "@ninots/middleware": "^0.1.0",
         "@ninots/console": "^0.1.0",
@@ -41,6 +41,7 @@
         "@ninots/routing": "^0.1.0",
         "@ninots/support": "^0.1.0",
         "@ninots/session": "^0.2.0",
+        "@ninots/social-auth": "^0.1.0",
         "@ninots/filesystem": "^0.1.0",
         "@ninots/view": "^0.1.0"
     },

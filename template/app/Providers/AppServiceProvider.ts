@@ -6,6 +6,7 @@ import type { EventDispatcher } from "@ninots/events";
 import { createWideEvent, runWithContext } from "@ninots/logger";
 import { verifyCsrf, wideEventMiddleware, type MiddlewareStack } from "@ninots/middleware";
 import { mkdirSync } from "node:fs";
+import { createOAuthManager, OAUTH_MANAGER_KEY } from "@/app/Auth/createOAuthServices";
 import { UsersController } from "@/app/Http/Controllers/UsersController";
 import {
     AUTH_MANAGER_KEY,
@@ -40,6 +41,11 @@ export class AppServiceProvider extends ServiceProvider {
             AUTH_MANAGER_KEY,
             () => new AuthManager({ default: authConfig.defaults.guard }),
         );
+
+        const oauth = createOAuthManager();
+        if (oauth) {
+            this.app.singleton(OAUTH_MANAGER_KEY, () => oauth);
+        }
     }
 
     public override boot(): void {

@@ -12,7 +12,7 @@ describe("create-ninots", () => {
         }
     });
 
-    test("scaffolds template with TS7, session/auth ^0.2.0", () => {
+    test("scaffolds template with TS7, social-auth ^0.1.0, auth ^0.3.0", () => {
         const proc = Bun.spawnSync(["bun", "run", "./bin/create-ninots.ts", dest], {
             cwd: join(import.meta.dir, ".."),
             stdout: "pipe",
@@ -22,6 +22,7 @@ describe("create-ninots", () => {
         expect(existsSync(join(dest, "nino"))).toBe(true);
         expect(existsSync(join(dest, "bootstrap", "cli.ts"))).toBe(true);
         expect(existsSync(join(dest, ".git"))).toBe(false);
+        expect(existsSync(join(dest, "app", "Auth", "createOAuthServices.ts"))).toBe(true);
 
         const pkg = JSON.parse(readFileSync(join(dest, "package.json"), "utf8")) as {
             dependencies: Record<string, string>;
@@ -30,7 +31,8 @@ describe("create-ninots", () => {
         expect(pkg.devDependencies.typescript).toBe("^7.0.0");
         expect(pkg.dependencies["@ninots/support"]).toBe("^0.1.0");
         expect(pkg.dependencies["@ninots/session"]).toBe("^0.2.0");
-        expect(pkg.dependencies["@ninots/auth"]).toBe("^0.2.0");
+        expect(pkg.dependencies["@ninots/auth"]).toBe("^0.3.0");
+        expect(pkg.dependencies["@ninots/social-auth"]).toBe("^0.1.0");
         expect(JSON.stringify(pkg)).not.toContain("@ninots/cli");
     });
 });
